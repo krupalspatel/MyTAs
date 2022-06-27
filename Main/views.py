@@ -80,8 +80,9 @@ def facultylogin(request):
          
         try:
             user = faculty.objects.get(mail=facultymail,pwd=facultypwd)
+            context={'facid':user.id}
             messages.success(request,"success")
-            return render(request, 'hello.html')
+            return render(request, 'facultyHome.html', context)
         except :
             user=None
             messages.info(request,"Invalid details")
